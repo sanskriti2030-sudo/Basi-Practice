@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -17,52 +18,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.submitButton.setOnClickListener {
-            var nameEd = binding.nameEd.text.toString()
-            var fatherEd = binding.fatherEd.text.toString()
-            var mobileEd = binding.mobileEd.text.toString()
+            val nameEd = binding.nameEd.text.toString().trim()
+            val fatherEd = binding.fatherEd.text.toString().trim()
+            val mobileEd = binding.mobileEd.text.toString().trim()
 
-            if (nameEd.isEmpty()) {
-                Toast.makeText(this, "Name is required", Toast.LENGTH_SHORT).show()
+            if (nameEd.isEmpty() || fatherEd.isEmpty() || mobileEd.isEmpty()) {
+                Toast.makeText(this, "Fill all text", Toast.LENGTH_SHORT).show()
+            }
+
+            if (mobileEd.length != 10) {
+
+                Toast.makeText(this, "Your number is invalid", Toast.LENGTH_SHORT).show()
+
             } else {
                 binding.name.text = nameEd
-            }
-            if (fatherEd.isEmpty()) {
-                Toast.makeText(this, "Father's Name is required", Toast.LENGTH_SHORT).show()
-            } else {
                 binding.father.text = fatherEd
-            }
-            if (mobileEd.isEmpty()) {
-                Toast.makeText(this, "Mobile No. is required", Toast.LENGTH_SHORT).show()
-            } else {
                 binding.mobile.text = mobileEd
             }
-
-
         }
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
